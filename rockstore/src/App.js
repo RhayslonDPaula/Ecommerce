@@ -1,52 +1,35 @@
-import { faBars, faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link,} from "react-router-dom";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import ProductsList from "./components/ProductsList";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("/db.json")
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products));
+  }, []);
   return (
     <Router>   
       <div className="App">
-        <div className="nav">
-         <div className="inner-content">
-          <h1 className="logo">
-            ROCK<span>STORE</span>
-          </h1>
-          <nav>
-            <ul>
-              <li> 
-                <Link to= "/">Home</Link>
-              </li>
-              <li> 
-                <Link to= "/products">Produtos</Link>
-              </li>
-              <li> 
-                <Link to= "/about">Sobre</Link>
-              </li>
-              <li> 
-                <Link to= "/contact">Contatos</Link>
-              </li>
-              <li> 
-                <Link to= "/account">conta</Link>
-              </li>
-            </ul>
-          </nav>
-          <div className="navs-icon-container">
-            <div className="search-input-container">
-              <input type="search" />
-              <FontAwesomeIcon icon={faSearch}/>
+        <Navbar />
+        <main>
+          <Header />
+          <div className="page-inner-content">
+            <div className="section-title">
+              <h3>Produtos Selecionados</h3>
+              <div className="underline"></div>
             </div>
-            <button className="shopping-cart">
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <div className="products-count">15</div>
-            </button>
-            <button className="menu-button">
-              <FontAwesomeIcon icon={faBars}/>
-            </button>
+            <div className="main-content">
+              <ProductsList products={products}/>
 
+            </div>
           </div>
-         </div>
-        </div>
+        </main>
       </div>
     </Router>
   );

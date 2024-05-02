@@ -28,7 +28,7 @@ button{
     border: nome;
     cursor: pointer;
 }
-/* Nav */
+/* START NAV */
 
 .nav {
     background-color: #fff;
@@ -112,7 +112,7 @@ nav ul {
     color: #808080;
 }
 
-navul li: hover{
+nav ul li: hover{
     transform: tranlateY(-4px);
     transition: all 0.2s;
     font-weigth: bold;
@@ -121,3 +121,113 @@ navul li: hover{
 .menu-button {
     display: none;
 }
+
+/* END NAV */
+
+/* START HEADER */
+header {
+    background-color: var(--primary-color);
+}
+
+header .inner-content {
+   max-width: 1600px;
+   margin-inline: auto;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr); 
+   sling-item: center;
+   padding: 4rem;
+   gap: 4rem;
+}
+
+header .left-side {
+    color: #fff;
+}
+
+
+header .left-side h2 {
+    font-size: 2.5rem;
+}
+
+
+header .left-side p {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.see-more-btn {
+    background-color: var(--primary-color);
+    padding: 0.8rem 1rem;
+    border-radius:8px;
+    transition: all 0.2s;
+    display: flex;
+    max-width: 130px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.see-more-btn:hover {
+    background-color: var(--dark-primary-color);
+    max-width: 200px;
+}
+
+header .right-side img{
+    width: 100%;
+}
+/* END HEADER*/
+
+/*MEDIA : NAV E HEADER*/
+
+@media (max-width: 920px) {
+    .nav h1{
+        font-size: 1.2rem;
+    }
+
+    header .inner-content {
+        gap:2rem;
+        padding:1.5rem;
+        padding-top: 3rem;
+
+    }
+
+    header .left-side h2{
+        font-size: 1.8rem;
+    }
+
+    nav{
+        position: absolute;
+        top: 55px;
+        left: 0;
+        background-color: #fff;
+        width:100%;
+        padding-bottom: 1rem;
+        display:none;
+    }
+    nav.show {
+        display: block;
+    }
+    .menu-button {
+        display: inline;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    nav ul li {
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+}
+
+@media(max-width: 700px){
+    header .inner-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .search-input-container{
+        display: none;
+    }
+}
+
