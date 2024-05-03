@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import ProductsList from "./components/ProductsList";
 import { useEffect, useState } from "react";
+import ExclusiveSection from "./components/ExclusiveSection";
+import TestinmonialsList from "./components/TestinmonialsList";
+import Footer from "./components/Footer";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -30,6 +33,9 @@ function App() {
             </div>
           </div>
         </main>
+        <ExclusiveSection />
+        <TestinmonialsList />
+        <Footer/>
       </div>
     </Router>
   );

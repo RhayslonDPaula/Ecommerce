@@ -9,7 +9,7 @@ export default function Navbar() {
     <div className="nav">
          <div className="inner-content">
           <h1 className="logo">
-            ROCK<span>STORE</span>
+            RHAY<span>STORE</span>
           </h1>
           <nav className={`${show && "show"}`}>
             <ul>
@@ -26,7 +26,7 @@ export default function Navbar() {
                 <Link to= "/contact">Contatos</Link>
               </li>
               <li> 
-                <Link to= "/account">conta</Link>
+                <Link to= "/account">Conta</Link>
               </li>
             </ul>
           </nav>
