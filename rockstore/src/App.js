@@ -1,22 +1,37 @@
-import { Link, NavLink } from "react-router-dom";
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import ProductsList from "./components/ProductsList";
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-  <div className="App">
-      <div className="nav">
-        <h1 className="logo">
-          Rock <span>STORE</span>
-        </h1>
-        <nav>
-          <ul>
-            <li> 
-              <Link to= "/">Home</Link>
-            </li>
+  const [products, setProducts] = useState([]);
 
-          </ul>
-        </nav>
+  useEffect(() => {
+    fetch("/db.json")
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products));
+  }, []);
+  return (
+    <Router>   
+      <div className="App">
+        <Navbar />
+        <main>
+          <Header />
+          <div className="page-inner-content">
+            <div className="section-title">
+              <h3>Produtos Selecionados</h3>
+              <div className="underline"></div>
+            </div>
+            <div className="main-content">
+              <ProductsList products={products}/>
+            </div>
+          </div>
+        </main>
       </div>
-  </div>
-);
+    </Router>
+  );
 }
 export default App;
